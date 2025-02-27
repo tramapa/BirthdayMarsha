@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('pink.jpeg'); 
+            background-size: cover;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            color: #fff;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        h1 {
+            color: #ff4d79;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #333;
+            font-size: 1.2em;
+            margin: 0;
+        }
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background: #ff4d79;
+            border-radius: 50% 50% 0 0;
+            bottom: 100%;
+            left: 20%;
+            animation: float 3s ease-in-out infinite;
+            z-index: 1;
+        }
+        .balloon:nth-child(2) {
+            left: 60%;
+            background: #ffcc00;
+            animation-delay: 1s;
+        }
+        .balloon:nth-child(3) {
+            left: 40%;
+            background: #00ccff;
+            animation-delay: 2s;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff4d79;
+            top: -10px;
+            animation: fall 5s linear infinite;
+        }
+        .confetti:nth-child(2) {
+            left: 20%;
+            background: #ffcc00;
+            animation-delay: 1s;
+        }
+        .confetti:nth-child(3) {
+            left: 40%;
+            background: #00ccff;
+            animation-delay: 2s;
+        }
+        .confetti:nth-child(4) {
+            left: 60%;
+            background: #ff4d79;
+            animation-delay: 3s;
+        }
+        .confetti:nth-child(5) {
+            left: 80%;
+            background: #ffcc00;
+            animation-delay: 4s;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+        @keyframes fall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+        .picture-frame {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Happy Birthday, Honey! ❤️</h1>
+        <p>Thank you for coming into my life.<br>
+        I am beyond grateful to celebrate your birthday once again.</p>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+    </div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+</body>
+</html>
