@@ -24,63 +24,6 @@
             align-items: center;
         }
 
-        .countdown-container {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
-            margin: 20px;
-            max-width: 600px;
-            width: 90%;
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .countdown-item {
-            background: linear-gradient(45deg, #ff69b4, #ff1493);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            min-width: 100px;
-            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
-        }
-
-        .countdown-number {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .countdown-label {
-            font-size: 1em;
-            opacity: 0.9;
-        }
-
-        .message {
-            font-size: 1.8em;
-            margin: 20px 0;
-            color: #ff1493;
-            text-shadow: 1px 1px 0 white;
-        }
-
-        .loading-message {
-            font-size: 1.3em;
-            color: #ff69b4;
-            margin-top: 20px;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
-        }
-
         /* Birthday Content Styles */
         .container {
             max-width: 800px;
@@ -255,9 +198,9 @@
             100% { transform: scale(0); opacity: 0; }
         }
 
-        /* Birthday content container - hidden by default */
+        /* Birthday content container - visible by default */
         .birthday-content {
-            display: none;
+            display: block;
         }
     </style>
 </head>
@@ -265,34 +208,7 @@
     <div class="sparkles" id="sparkles"></div>
     <div class="hearts" id="hearts"></div>
 
-    <!-- Countdown Section -->
-    <div class="countdown-container" id="countdown-container">
-        <h1>🎀 Surprise Loading... 🎀</h1>
-        <p class="message">Something special is coming for Marsha!</p>
-        
-        <div class="countdown">
-            <div class="countdown-item">
-                <div class="countdown-number" id="days">00</div>
-                <div class="countdown-label">Days</div>
-            </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="hours">00</div>
-                <div class="countdown-label">Hours</div>
-            </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="minutes">00</div>
-                <div class="countdown-label">Minutes</div>
-            </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="seconds">00</div>
-                <div class="countdown-label">Seconds</div>
-            </div>
-        </div>
-        
-        <p class="loading-message">Please wait until March 2nd! 💖</p>
-    </div>
-
-    <!-- Birthday Content - Hidden until March 2nd -->
+    <!-- Birthday Content - Visible by default -->
     <div class="birthday-content" id="birthday-content">
         <div class="container">
             <h1>🎀 Happy 19th Birthday, Marsha Abigael Pangkey! 🎀</h1>
@@ -327,31 +243,6 @@
     </div>
 
     <script>
-        // Countdown Timer
-        function updateCountdown() {
-            const birthday = new Date('March 2, 2025 00:00:00').getTime();
-            const now = new Date().getTime();
-            const difference = birthday - now;
-
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-            document.getElementById('days').innerHTML = days.toString().padStart(2, '0');
-            document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
-
-            // Check if it's birthday time
-            if (difference <= 0) {
-                document.getElementById('countdown-container').style.display = 'none';
-                document.getElementById('birthday-content').style.display = 'block';
-                clearInterval(countdownTimer);
-                initBirthdayEffects(); // Initialize birthday page animations
-            }
-        }
-
         // Create sparkles
         function createSparkle() {
             const sparkle = document.createElement('div');
@@ -417,19 +308,8 @@
             slides[slideIndex].classList.add("active");
         }
 
-        // Initialize countdown
-        updateCountdown();
-        const countdownTimer = setInterval(updateCountdown, 1000);
-        setInterval(createSparkle, 200);
-
-        // Check if it's already past the birthday
-        const birthday = new Date('March 2, 2025 00:00:00').getTime();
-        const now = new Date().getTime();
-        if (now >= birthday) {
-            document.getElementById('countdown-container').style.display = 'none';
-            document.getElementById('birthday-content').style.display = 'block';
-            initBirthdayEffects();
-        }
+        // Initialize birthday effects immediately
+        initBirthdayEffects();
     </script>
 </body>
 </html>
